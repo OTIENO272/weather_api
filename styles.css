@@ -8,7 +8,7 @@
 }
 
 /* =========================
-   BODY LAYOUT (CENTERED)
+   BODY
 ========================= */
 body{
     width: 100%;
@@ -29,14 +29,13 @@ body{
 
     padding: 30px 0;
     color: #fff;
-    overflow-x: hidden;
 }
 
 /* =========================
-   WEATHER CARD (APP)
+   MAIN APP CARD
 ========================= */
 #app{
-    width: 380px;
+    width: 420px;
 
     background: rgba(255,255,255,0.08);
     border: 1px solid rgba(255,255,255,0.12);
@@ -44,8 +43,8 @@ body{
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
 
-    border-radius: 26px;
-    padding: 28px;
+    border-radius: 28px;
+    padding: 32px;
 
     box-shadow:
         0 10px 40px rgba(0,0,0,0.35),
@@ -63,7 +62,7 @@ body{
 
 #searchBarInput{
     flex: 1;
-    height: 48px;
+    height: 52px;
 
     border-radius: 16px;
     border: 1px solid rgba(255,255,255,0.1);
@@ -73,44 +72,57 @@ body{
 
     padding: 0 16px;
     outline: none;
+
+    font-size: 15px;
 }
 
 #searchIcon{
-    width: 48px;
+    width: 52px;
     border: none;
     border-radius: 16px;
 
     background: linear-gradient(135deg, #00aaff, #0066ff);
     color: white;
+
     cursor: pointer;
+    font-size: 16px;
 }
 
 /* =========================
-   INFO TEXT
+   DATE
 ========================= */
 #date{
-    font-size: 13px;
-    opacity: 0.7;
+    font-size: 15px;
+    opacity: 0.75;
     margin-bottom: 6px;
 }
 
+/* =========================
+   CITY (BIG TITLE)
+========================= */
 #city{
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
+/* =========================
+   DESCRIPTION
+========================= */
 #description{
-    margin-top: 10px;
-    opacity: 0.8;
+    margin-top: 12px;
+    font-size: 18px;
+    opacity: 0.85;
     text-transform: capitalize;
 }
 
 /* =========================
-   TEMP
+   TEMPERATURE (MAIN FOCUS)
 ========================= */
 #temp{
-    font-size: 72px;
-    font-weight: bold;
+    font-size: 92px;
+    font-weight: 800;
+    letter-spacing: -3px;
     margin: 15px 0;
 }
 
@@ -118,21 +130,21 @@ body{
    WEATHER ICON BOX
 ========================= */
 #tempImage{
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
 
-    margin: 15px auto;
+    margin: 20px auto;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
     background: rgba(255,255,255,0.06);
-    border-radius: 20px;
+    border-radius: 22px;
 }
 
 #tempImage img{
-    width: 90px;
+    width: 110px;
 }
 
 /* =========================
@@ -141,22 +153,34 @@ body{
 #extra-info{
     display: flex;
     justify-content: space-between;
+    gap: 16px;
+
     margin-top: 20px;
-    gap: 12px;
 }
 
 .col{
     flex: 1;
 
     background: rgba(255,255,255,0.06);
-    border-radius: 16px;
+    border-radius: 18px;
 
-    padding: 14px;
+    padding: 18px;
     text-align: center;
 }
 
+.col h5{
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.col p{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 6px;
+}
+
 /* =========================
-   FOOTER (BELOW CARD)
+   FOOTER
 ========================= */
 #footer{
     margin-top: 20px;
@@ -177,14 +201,29 @@ body{
 }
 
 /* =========================
-   RESPONSIVE
+   MOBILE RESPONSIVE
 ========================= */
 @media(max-width: 480px){
+
     #app{
-        width: 90%;
+        width: 92%;
+        padding: 28px;
+    }
+
+    #city{
+        font-size: 32px;
     }
 
     #temp{
-        font-size: 60px;
+        font-size: 80px;
+    }
+
+    #tempImage{
+        width: 130px;
+        height: 130px;
+    }
+
+    #tempImage img{
+        width: 95px;
     }
 }
