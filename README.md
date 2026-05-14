@@ -149,8 +149,7 @@ Inspired by:
 
 ## 👨‍💻 Author
 
-Created by: VichTech{}
-
+Created by:VichTech{👾}
 ---
 
 ## 📄 License
