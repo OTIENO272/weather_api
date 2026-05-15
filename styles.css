@@ -1,4 +1,334 @@
-/* =========================
+/* ==============================================
+   Weather App — styles.css
+   Includes original glassmorphism design +
+   dark/light theme toggle support
+   ============================================== */
+
+/* ── CSS Variables (Light Theme) ─────────────── */
+:root,
+[data-theme="light"] {
+  --bg-gradient-1: #74b9ff;
+  --bg-gradient-2: #a29bfe;
+  --bg-gradient-3: #fd79a8;
+  --card-bg: rgba(255, 255, 255, 0.15);
+  --card-border: rgba(255, 255, 255, 0.35);
+  --card-shadow: 0 8px 32px rgba(31, 38, 135, 0.25);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --input-bg: rgba(255, 255, 255, 0.25);
+  --input-border: rgba(255, 255, 255, 0.5);
+  --input-text: #ffffff;
+  --input-placeholder: rgba(255, 255, 255, 0.7);
+  --btn-bg: rgba(255, 255, 255, 0.25);
+  --btn-hover: rgba(255, 255, 255, 0.4);
+  --extra-info-bg: rgba(255, 255, 255, 0.1);
+  --footer-color: rgba(255, 255, 255, 0.7);
+  --toggle-btn-bg: rgba(255, 255, 255, 0.2);
+  --toggle-btn-hover: rgba(255, 255, 255, 0.35);
+  --toggle-btn-color: #ffffff;
+}
+
+/* ── CSS Variables (Dark Theme) ──────────────── */
+[data-theme="dark"] {
+  --bg-gradient-1: #0f2027;
+  --bg-gradient-2: #203a43;
+  --bg-gradient-3: #2c5364;
+  --card-bg: rgba(255, 255, 255, 0.05);
+  --card-border: rgba(255, 255, 255, 0.1);
+  --card-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  --text-primary: #e0f7fa;
+  --text-secondary: rgba(224, 247, 250, 0.85);
+  --text-muted: rgba(224, 247, 250, 0.55);
+  --input-bg: rgba(255, 255, 255, 0.08);
+  --input-border: rgba(255, 255, 255, 0.15);
+  --input-text: #e0f7fa;
+  --input-placeholder: rgba(224, 247, 250, 0.45);
+  --btn-bg: rgba(255, 255, 255, 0.1);
+  --btn-hover: rgba(255, 255, 255, 0.18);
+  --extra-info-bg: rgba(255, 255, 255, 0.05);
+  --footer-color: rgba(224, 247, 250, 0.45);
+  --toggle-btn-bg: rgba(255, 255, 255, 0.1);
+  --toggle-btn-hover: rgba(255, 255, 255, 0.18);
+  --toggle-btn-color: #ffd54f;
+}
+
+/* ── Base & Reset ─────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-1) 0%,
+    var(--bg-gradient-2) 50%,
+    var(--bg-gradient-3) 100%
+  );
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition:
+    background 0.55s ease,
+    color 0.35s ease;
+}
+
+/* ── Theme Toggle Button ──────────────────────── */
+#themeToggleBtn {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1.5px solid var(--card-border);
+  background: var(--toggle-btn-bg);
+  color: var(--toggle-btn-color);
+  font-size: 17px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 0.3s,
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    color 0.3s,
+    border-color 0.3s;
+}
+
+#themeToggleBtn:hover {
+  background: var(--toggle-btn-hover);
+  transform: scale(1.1) rotate(15deg);
+}
+
+#themeToggleBtn:active {
+  transform: scale(0.95);
+}
+
+/* Icon spin on theme change */
+#themeToggleBtn.spinning #themeIcon {
+  animation: iconSpin 0.4s ease;
+}
+
+@keyframes iconSpin {
+  from { transform: rotate(0deg); opacity: 0.4; }
+  to   { transform: rotate(360deg); opacity: 1; }
+}
+
+/* ── Main App Card ────────────────────────────── */
+#app {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 24px;
+  box-shadow: var(--card-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 32px 28px 28px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  color: var(--text-primary);
+  transition:
+    background 0.5s,
+    border-color 0.4s,
+    box-shadow 0.4s;
+}
+
+/* ── Search Bar ───────────────────────────────── */
+#searchBar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+#searchBarInput {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 50px;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
+  font-size: 14px;
+  outline: none;
+  backdrop-filter: blur(6px);
+  transition:
+    background 0.3s,
+    border-color 0.3s,
+    color 0.3s;
+}
+
+#searchBarInput::placeholder {
+  color: var(--input-placeholder);
+}
+
+#searchBarInput:focus {
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+#searchIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--input-border);
+  background: var(--btn-bg);
+  color: var(--text-primary);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s, transform 0.2s;
+}
+
+#searchIcon:hover {
+  background: var(--btn-hover);
+  transform: scale(1.08);
+}
+
+/* ── Date & City ──────────────────────────────── */
+#info {
+  margin-bottom: 12px;
+}
+
+#date {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+}
+
+#city {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+/* ── Weather Icon ─────────────────────────────── */
+#tempImg {
+  font-size: 72px;
+  margin: 8px 0 4px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+#tempImg img {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+}
+
+/* ── Weather Description ──────────────────────── */
+#description {
+  font-size: 15px;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+  margin-bottom: 6px;
+  letter-spacing: 0.02em;
+  transition: color 0.3s;
+}
+
+/* ── Temperature ──────────────────────────────── */
+#temp {
+  font-size: 72px;
+  font-weight: 300;
+  color: var(--text-primary);
+  letter-spacing: -3px;
+  line-height: 1;
+  margin: 4px 0 20px;
+  transition: color 0.3s;
+}
+
+/* ── Highs / Lows ─────────────────────────────── */
+#extra-info {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  background: var(--extra-info-bg);
+  border-radius: 16px;
+  padding: 14px 24px;
+  border: 1px solid var(--card-border);
+  transition: background 0.4s, border-color 0.4s;
+}
+
+.col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info {
+  text-align: center;
+}
+
+.info h5 {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  transition: color 0.3s;
+}
+
+.info p {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: color 0.3s;
+}
+
+/* ── Footer ───────────────────────────────────── */
+#footer {
+  margin-top: 20px;
+  text-align: center;
+}
+
+#footer p {
+  font-size: 12px;
+  color: var(--footer-color);
+  transition: color 0.3s;
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 440px) {
+  #app {
+    padding: 24px 18px 20px;
+    border-radius: 20px;
+  }
+
+  #temp {
+    font-size: 60px;
+  }
+
+  #city {
+    font-size: 20px;
+  }
+
+  #themeToggleBtn {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+}/* =========================
    RESET
 ========================= */
 *{
