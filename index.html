@@ -1,57 +1,66 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!--Font AWesome CDN-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="./styles.css">
-<link rel="shortcut icon" href="./image.png" type="image/x-icon">
-    <title>Weather App</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--Font Awesome CDN-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="shortcut icon" href="./image.png" type="image/x-icon">
+  <title>Weather App</title>
 </head>
 <body>
-    <div id="app">
-        <!--Search Bar-->
-        <div id="searchBar">
-            <input type="text" id="searchBarInput" placeholder="Search Location">
-            <button onclick="getWeather()"  id="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></button>
-        </div>
-        <!--Date and City-->
-        <div id="info">
-            <p id="date"></p>
-            <h3 id="city"></h3>
-        </div>
-        <!--Weather image-->
-        <div id="tempImg"></div>
 
-        <!--Description-->
+  <!-- ── Theme Toggle Button ───────────────────────── -->
+  <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Switch to dark mode" title="Toggle theme">
+    <i class="fa-solid fa-moon" id="themeIcon"></i>
+  </button>
+  <!-- ── End Theme Toggle ──────────────────────────── -->
 
-        <div id="description"></div>
-
-        <!--Temp-->
-        <div id="temp"></div>
-
-        <!--Extra Info-->
-        <div id="extra-info">
-            <div class="col">
-                <div class="info">
-                    <h5>Highs</h5>
-                    <p id="tempMax"></p>
-                </div>
-            </div>
-              <div class="col">
-                <div class="info">
-                    <h5>Lows</h5>
-                    <p id="tempMin"></p>
-                </div>
-            </div>
-        </div>
-
+  <div id="app">
+    <!--Search Bar-->
+    <div id="searchBar">
+      <input type="text" id="searchBarInput" placeholder="Search Location">
+      <button onclick="getWeather()" id="searchIcon"><i class="fa-solid fa-magnifying-glass"></i></button>
     </div>
-    <script src="./app.js"></script>
-          <footer id="footer">
+
+    <!--Date and City-->
+    <div id="info">
+      <p id="date"></p>
+      <h3 id="city"></h3>
+    </div>
+
+    <!--Weather image-->
+    <div id="tempImg"></div>
+
+    <!--Description-->
+    <div id="description"></div>
+
+    <!--Temp-->
+    <div id="temp"></div>
+
+    <!--Extra Info-->
+    <div id="extra-info">
+      <div class="col">
+        <div class="info">
+          <h5>Highs</h5>
+          <p id="tempMax"></p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="info">
+          <h5>Lows</h5>
+          <p id="tempMin"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+
+  <footer id="footer">
     <p>&copy; 2026 Weather App | Built with ❤️ by VichTech👾</p>
-</footer>
-        
+  </footer>
+
 </body>
 </html>
