@@ -3,7 +3,7 @@
 //  Original weather logic + theme toggle
 // =====================================================
 
-const API_KEY = "YOUR_API_KEY"; // 🔑
+const API_KEY = "dddbb7cbc4f7ce2530e58d24f79f1d49"; // 🔑
 
 // ── Date display ──────────────────────────────────
 function displayDate() {
