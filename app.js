@@ -3,7 +3,7 @@
 //  Original weather logic + theme toggle
 // =====================================================
 
-const API_KEY = "YOUR_API_KEY"; // 🔑 Replace with your OpenWeather API key
+const API_KEY = "YOUR_API_KEY"; // 🔑
 
 // ── Date display ──────────────────────────────────
 function displayDate() {
