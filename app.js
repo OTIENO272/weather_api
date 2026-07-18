@@ -12,6 +12,7 @@ function displayDate() {
   document.getElementById("date").textContent = now.toLocaleDateString("en-US", options);
 }
 
+
 displayDate();
 
 // ── Fetch weather ─────────────────────────────────
