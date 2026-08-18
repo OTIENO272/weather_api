@@ -1,5 +1,4 @@
 
-
 // =====================================================
 //  Weather App — app.js
 //  Original weather logic + theme toggle
